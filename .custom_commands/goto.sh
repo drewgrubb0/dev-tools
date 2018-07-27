@@ -73,6 +73,9 @@ remove_alias(){
 print_help(){
     echo "usage: goto [alias]"
     echo "usage: goto make [alias] [dir]"
+    echo "usage: goto list"
+    echo "usage: goto remove [alias] [dir]"
+    echo "usage: goto help"
     return 0
 }
 
