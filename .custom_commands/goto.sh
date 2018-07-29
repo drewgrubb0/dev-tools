@@ -9,7 +9,7 @@ function goto(){
 
     if [ ! -f "${alias_file}" ]; then
         echo "making alias file at ${alias_file}..."
-        touch ${alias_file}
+        touch "${alias_file}"
     fi
 
     if [ -z "$subcommand" ]; then
@@ -45,13 +45,14 @@ make_alias(){
         return 1
     fi
 
-    echo "$1 $(pwd)/$2" >> ${alias_file}
+    echo "$1 $(pwd)/$2" >> "${alias_file}"
+    echo "alias goto-$1='cd $(pwd)/$2'" >> "$(eval echo "~$USER")/.bashrc"
     echo "goto alias made!"
     return 0
 }
 
 list_alias(){
-    cat ${alias_file}
+    cat "${alias_file}"
     return 0
 }
 
@@ -59,9 +60,9 @@ remove_alias(){
     while read -r line
     do
         args=($line)
-        if [ ${args[0]} = "$1" ]; then
-            sed -Ei "s@${line}@@" ${alias_file}
-            tr -d '\n' < ${alias_file}
+        if [ "${args[0]}" = "$1" ]; then
+            sed -Ei "s@${line}@@" "${alias_file}"
+            sed "/goto-$1/d" "$(eval echo "~$USER")/.bashrc"
             return 0
         fi
     done < "${alias_file}"
@@ -83,7 +84,7 @@ goto_alias(){
     while read -r line
     do
         args=($line)
-        if [ ${args[0]} = "$1" ]; then
+        if [ "${args[0]}" = "$1" ]; then
             cd "${args[1]}"
             return 0
         fi
