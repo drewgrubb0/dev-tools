@@ -46,7 +46,6 @@ make_alias(){
     fi
 
     echo "$1 $(pwd)/$2" >> "${alias_file}"
-    echo "alias goto-$1='cd $(pwd)/$2'" >> "$(eval echo "~$USER")/.bashrc"
     echo "goto alias made!"
     return 0
 }
@@ -62,7 +61,6 @@ remove_alias(){
         args=($line)
         if [ "${args[0]}" = "$1" ]; then
             sed -Ei "s@${line}@@" "${alias_file}"
-            sed "/goto-$1/d" "$(eval echo "~$USER")/.bashrc"
             return 0
         fi
     done < "${alias_file}"
