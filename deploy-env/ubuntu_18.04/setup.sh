@@ -6,6 +6,7 @@ sudo apt update
 sudo apt install git -y
 sudo apt install curl -y
 sudo apt install jq -y
+sudo apt install redshift -y
 
 //Java
 sudo apt install openjdk-8-jdk -y
