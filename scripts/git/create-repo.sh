@@ -40,4 +40,14 @@ if [ -z "$REPO_DEST" ]; then
     REPO_DEST="."
 fi
 
-curl -i -u $USER_NAME https://api.github.com/user/repos
+curl -i https://api.github.com/user/repos\
+     -u $USER_NAME \
+     -X POST \
+     -d "{\"name\":\"${REPO_NAME}\",\"description\":\"${REPO_DESC}\""
+
+if [ $? -ne 0 ]; then
+    echo "Error creating new repository! exiting..."
+    exit 1
+fi
+
+cd ${REPO_DEST} && git clone git@github.com:${USER_NAME}/${REPO_NAME}.git
