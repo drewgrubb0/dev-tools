@@ -1,5 +1,6 @@
 function timer(){
     NUM_SECONDS=$1
+    echo "beep"
 
     if [ -z "${NUM_SECONDS}" ]; then
         echo "usage: timer [num_seconds] (options)"
@@ -18,7 +19,7 @@ function timer(){
         esac
     done
 
-    if [ SHOW_TIMER = "true" ]; then
+    if [ $SHOW_TIMER = "true" ]; then
         echo ${NUM_SECONDS}
     fi
 
@@ -27,7 +28,7 @@ function timer(){
     do
         sleep 1
         ((SECONDS_LEFT--))
-        if [ SHOW_TIMER = "true" ]; then
+        if [ $SHOW_TIMER = "true" ]; then
             echo "${SECONDS_LEFT}"
         fi
     done
