@@ -1,6 +1,6 @@
 function timer(){
     NUM_SECONDS=$1
-    echo "beep"
+    ALARM_LIMIT="7"
 
     if [ -z "${NUM_SECONDS}" ]; then
         echo "usage: timer [num_seconds] (options)"
@@ -14,6 +14,11 @@ function timer(){
         case "$1" in
             -v|--verbose)
                 SHOW_TIMER="true"
+                shift
+                ;;
+            --alarm)
+                ALARM_LIMIT=$2
+                shift
                 shift
                 ;;
         esac
@@ -34,7 +39,7 @@ function timer(){
     done
 
     NUM_ALARMS=0
-    while [ $NUM_ALARMS -lt 7 ]
+    while [ $NUM_ALARMS -lt $ALARM_LIMIT ]
     do
         echo -e "\a"
         sleep .1
