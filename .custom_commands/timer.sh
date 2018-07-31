@@ -1,8 +1,8 @@
 function timer(){
     NUM_SECONDS=$1
-    ALARM_LIMIT="7"
+    ALARM_LIMIT=7
 
-    if [ -z "${NUM_SECONDS}" ]; then
+    if [ -z "$NUM_SECONDS" ]; then
         echo "usage: timer [num_seconds] (options)"
         return 1
     fi
@@ -17,29 +17,29 @@ function timer(){
                 shift
                 ;;
             --alarm)
-                ALARM_LIMIT=$2
+                ALARM_LIMIT="$2"
                 shift
                 shift
                 ;;
         esac
     done
 
-    if [ $SHOW_TIMER = "true" ]; then
-        echo ${NUM_SECONDS}
+    if [ "$SHOW_TIMER" = "true" ]; then
+        echo "$NUM_SECONDS"
     fi
 
-    SECONDS_LEFT=${NUM_SECONDS}
-    while [ $SECONDS_LEFT -gt 0 ]
+    SECONDS_LEFT="$NUM_SECONDS"
+    while [ "$SECONDS_LEFT" -gt 0 ]
     do
         sleep 1
         ((SECONDS_LEFT--))
-        if [ $SHOW_TIMER = "true" ]; then
-            echo "${SECONDS_LEFT}"
+        if [ "$SHOW_TIMER" = "true" ]; then
+            echo "$SECONDS_LEFT"
         fi
     done
 
     NUM_ALARMS=0
-    while [ $NUM_ALARMS -lt $ALARM_LIMIT ]
+    while [ "$NUM_ALARMS" -lt "$ALARM_LIMIT" ]
     do
         echo -e "\a"
         sleep .1
