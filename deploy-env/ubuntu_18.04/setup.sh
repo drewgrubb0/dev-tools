@@ -23,13 +23,27 @@ sudo apt install python3-pip -y
 //Devops
 sudo apt install awscli -y
 sudo npm install -g serverless -y
-sudo snap install docker
 
-//Jenkins
-wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
-echo "deb https://pkg.jenkins.io/debian binary/" | sudo tee -a /etc/apt/sources.list
-sudo apt update
-sudo apt install jenkins -y
+//Docker
+sudo apt-get update
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get update
+sudo apt-get install docker-ce
+
+
+# //Jenkins Preferred via Docker
+# wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+# echo "deb https://pkg.jenkins.io/debian binary/" | sudo tee -a /etc/apt/sources.list
+# sudo apt update
+# sudo apt install jenkins -y
 
 //Databases
 sudo apt install mysql-server -y
