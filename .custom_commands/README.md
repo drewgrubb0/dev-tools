@@ -14,3 +14,4 @@ A timer that alerts you when its time has run out:
 
 Flags:
 - *-v | --verbose* - prints the number of seconds left in the countdown each second
+- *-a | --alarm* - plays alert once the timer hits zero
