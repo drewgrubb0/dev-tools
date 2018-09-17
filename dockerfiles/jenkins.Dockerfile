@@ -16,4 +16,4 @@ RUN chown -R jenkins:jenkins /var/log/jenkins
 RUN chown -R jenkins:jenkins /var/cache/jenkins
 
 #USER jenkins
-#WARNING: CONTAINER HAS ROOT PERMISSIONS
+#WARNING: CONTAINER HAS ROOT PERMISSIONS (NOT RECOMMENDED FOR PROD)
