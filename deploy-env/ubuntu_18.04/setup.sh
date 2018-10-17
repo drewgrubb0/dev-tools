@@ -95,6 +95,9 @@ if [ "${INSTALL_WEB}" = "true" ]; then
     sudo apt install nodejs -y
     sudo apt install npm -y
 
+    #TypeScript
+    sudo npm install -g typescript
+
     #CSS/SASS
     sudo apt install sass -y
 fi
