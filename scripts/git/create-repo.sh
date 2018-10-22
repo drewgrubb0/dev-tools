@@ -27,12 +27,12 @@ do
     esac
 done
 if [ -z "$REPO_NAME" ]; then
-    echo "Repository name must exist"
+    echo "Repository name must exist (--name)"
     exit 1
 fi
 
 if [ -z "$USER_NAME" ]; then
-    echo "Username must exist"
+    echo "Username must exist (--user)"
     exit 1
 fi
 
