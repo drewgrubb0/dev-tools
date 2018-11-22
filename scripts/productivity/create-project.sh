@@ -14,6 +14,7 @@ done
 
 if [ -z "$PROJECT_NAME" ]; then
     echo "A project name under --name is required"
+    79
     exit 1
 fi
 
