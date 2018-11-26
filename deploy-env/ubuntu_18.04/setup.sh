@@ -100,6 +100,9 @@ if [ "${INSTALL_WEB}" = "true" ]; then
 
     #CSS/SASS
     sudo apt install sass -y
+
+    #Angular
+    sudo npm install -g @angular/cli
 fi
 
 if [ "${INSTALL_DEVOPS}" = "true" ]; then
