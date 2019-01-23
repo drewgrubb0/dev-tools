@@ -15,7 +15,7 @@ docker build \
 docker run \
         -p 8080:8080 \
         -p 50000:50000 \
-        --name=jenkins-master \
+        --name=${CONTAINER_NAME} \
         --mount source=jenkins-log,target=/var/log/jenkins \
         --mount source=jenkins-data,target=/var/jenkins_home \
         -v /var/run/docker.sock:/var/run/docker.sock \
@@ -29,3 +29,5 @@ do
 done
 
 echo ${INIT_ADMIN_PASS}
+
+docker exec jenkins-master bash -c 'echo "alias jenkins=\"java -jar /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar\"" >> /root/.bashrc'

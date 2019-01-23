@@ -15,5 +15,7 @@ RUN mkdir /var/cache/jenkins
 RUN chown -R jenkins:jenkins /var/log/jenkins
 RUN chown -R jenkins:jenkins /var/cache/jenkins
 
+COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+
 #USER jenkins
-#WARNING: CONTAINER HAS ROOT PERMISSIONS (NOT RECOMMENDED FOR PROD)
